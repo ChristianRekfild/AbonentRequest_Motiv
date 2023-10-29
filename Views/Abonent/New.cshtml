@@ -36,12 +36,9 @@
         </p>
         <!-- !!! потом переделать на radioButton -->
         <p>
-            @* <label>Направление:</label><br />
-            <input type="text" name="direction" value="@Model.Direction.ToString()" /> *@
             <select asp-for="@Model.Direction"
                     class="form-control"
                     asp-items="Html.GetEnumSelectList<Direction>()">
-                <option>Выберите направление</option>
             </select>
         </p>
 
