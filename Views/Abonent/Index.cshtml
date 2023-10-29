@@ -1,0 +1,29 @@
+﻿@using motiv.Models;
+@model IEnumerable<AbonentRequest>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html>
+    <body>
+    <a asp-controller="Abonent" asp-action="New">Добавить обращение</a>
+
+        @foreach (var request in Model ?? new List<AbonentRequest>())
+            {
+            <div>
+            <p>@request.Id</p>
+            <p>@request.Country</p>
+            <p>@request.Region</p>
+            <p>@request.City</p>
+            <p>@request.Number</p>
+            <p>@request.Reason</p>
+            <p>@request.Direction.ToString()</p>
+            <p>@request.CreateDate</p>
+            <a asp-controller="Abonent" asp-action="Edit" asp-route-id=@request.Id>Редактировать</a>
+            <p>------------------------</p>
+            
+            </div>
+            }
+    </body>
+</html>

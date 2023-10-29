@@ -1,0 +1,58 @@
+﻿@using motiv.Models;
+@model AbonentRequest;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html>
+<body>
+
+    <form method="post" action="~/Abonent/Detail/@Model.Id">
+        <h2>Запрос абонента</h2>
+        <p>
+            <label>Id:</label><br />
+            <input type="number" name="id" value="@Model.Id" readonly="readonly" />
+        </p>
+        <p>
+            <label>Страна:</label><br />
+            <input type="text" name="country" value="@Model.Country" />
+        </p>
+        <p>
+            <label>Регион:</label><br />
+            <input type="text" name="Region" value="@Model.Region" />
+        </p>
+        <p>
+            <label>Город:</label><br />
+            <input type="text" name="city" value="@Model.City" />
+        </p>
+        <p>
+            <label>Номер:</label><br />
+            @* Странная фигня, но пока не подставил в name именно phone - он отказывался сохраняться. Гадина... *@
+            <input type="text" name="number" value="@Model.Number" />
+        </p>
+        <p>
+            <label>Причина обращения:</label><br />
+            <input type="text" name="reason" value="@Model.Reason" />
+        </p>
+        <!-- !!! потом переделать на radioButton -->
+        <p>
+            <label>Направление:</label><br />
+            <input type="text" name="direction" value="@Model.Direction.ToString()" />
+        </p>
+
+        <p>
+            <label>Дата создания:</label><br />
+            <input type="datetime" name="createdate" value="@Model.CreateDate" readonly="readonly" />
+        </p>
+
+        <p>
+            <input type="submit" value="Send" />
+        </p>
+
+    </form>
+
+    <a asp-controller="Abonent" asp-action="Delete" asp-route-id=@Model.Id>!Удалить обращение!</a>
+
+</body>
+</html>
